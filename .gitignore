@@ -1,0 +1,10 @@
+# Common
+node_modules
+.idea
+tmp
+Thumbs.db
+.DS_Store
+**/*.log
+**/*.blend?
+build/
+dist/
