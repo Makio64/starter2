@@ -1,19 +1,40 @@
 # Starter
-Provide solid starter for html5 project with an amazing workflow combining the power of the best tools of the moment:
-- webpack2 beta : async loading of module / minify / dead-code elimination / source-map
-- webpack2-dev-server beta : hot module replacement / super fast compilation
-- vue-js : amazing framework for creating dynamic html5 site
-- stylus : best css preprocessor tool
-- babel : allow you to write your code in es6 & es7
+
+Html5 project starter with workflow combining the power of the best tools of the moment:
+
+- [Webpack2](https://webpack.github.io/docs/roadmap.html)
+	- Async loading of module
+	- Tree Shaking
+	- Minify & optimize the build
+	- Source-map generation
+
+
+- [Webpack2 dev-server](https://webpack.github.io/docs/webpack-dev-server.html)
+	- Hot module replacement
+	- Super fast compilation
+
+
+- [Vue-js](https://vuejs.org/)
+	- Amazing framework for creating dynamic html5 site
+
+
+- [Stylus](http://stylus-lang.com/)
+	- Best css preprocessor tool
+
+
+- [Babeljs](https://babeljs.io/)
+	- Allow you to write your code in es6 & es7
 
 ## Install
-npm i
+Install [nodejs](https://nodejs.org/)
+
+In terminal: `npm i`
 
 ## Start dev server
-npm start
+In terminal: `npm start`
 
 ## Production Build
-npm run build
+In terminal: `npm run build`
 
-## Production Build + extra informations
-npm run build-extra
+## Production Build + extra infos
+In terminal: `npm run build-extra`
