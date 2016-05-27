@@ -1,4 +1,4 @@
-# Starter
+# Starter - Webpack2 / Vuejs / Stylus / es6 & es7
 
 Html5 project starter with workflow combining the power of the best tools of the moment:
 
