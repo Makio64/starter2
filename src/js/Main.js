@@ -17,7 +17,7 @@ class Main {
 			  }
 		})
 
-		const router = new VueRouter()
+		const router = new VueRouter({hashbang:false,history:true,saveScrollPosition:true,transitionOnLoad:true})
 		router.map({
 			'/page1': {
 				component: function (resolve) {
