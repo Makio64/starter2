@@ -1,11 +1,23 @@
 <template>
-	<div class="app">
+	<div class='title'>
 		I love you so much
 	</div>
+	<menu></menu>
 </template>
 
+<script>
+
+const Menu = require('./Menu')
+
+export default {
+	components:{
+		menu:Menu
+	}
+}
+</script>
+
 <style lang="stylus" scoped>
-div
+.title
 	color #000
 	font-size 100px
 </style>

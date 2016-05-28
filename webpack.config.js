@@ -14,6 +14,7 @@ var plugins = [
 	new webpack.optimize.CommonsChunkPlugin({children: true, async: true})
 ]
 if(isProduction){
+	plugins.push(new webpack.optimize.OccurenceOrderPlugin())
 	plugins.push(new webpack.optimize.UglifyJsPlugin({comments:false, compress:{warnings: false} }))
 } else {
 	plugins.push(new webpack.HotModuleReplacementPlugin())

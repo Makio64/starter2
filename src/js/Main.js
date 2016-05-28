@@ -1,49 +1,49 @@
-// All great stories start with a Main.coffee
-import Vue from 'vue'
-import App from '../vue/App.vue'
+// All great stories start with a Main.js
+const Vue		= require('vue')
+const VueRouter = require('vue-router')
 const Stage 	= require('./makio/core/Stage')
-// Stage2d 		= require('makio/core/Stage2d')
-// Stage3d 		= require('makio/core/Stage3d')
-// Stage3dCSS 	= require('makio/core/Stage3dCSS')
-// OrbitControl = require('makio/3d/OrbitControls')
-// gui			= require('makio/core/GUI').gui
+
+Vue.use(VueRouter)
 
 class Main {
-
-
 	// Entry point
 	constructor(){
+
 		console.log('hello')
-		new Vue({
-			el: 'body',
+
+		let app = Vue.extend({
 			components: {
-				app: App
+				  app: require('../vue/App.vue')
+			  }
+		})
+
+		const router = new VueRouter()
+		router.map({
+			'/page1': {
+				component: function (resolve) {
+					  require(['../vue/page1.vue'], resolve)
+				}
+			},
+			'/page2': {
+				component: function (resolve) {
+					  require(['../vue/page2.vue'], resolve)
+				}
 			}
 		})
-		// ---------------------------------------------------------------------- INIT STAGE 2D / 3D
-		// Stage3d.init({background:0x000000})
-		// Stage3d.control = new OrbitControl(Stage3d.camera,500)
-		// Stage3d.initPostProcessing()
-		// Stage3dCSS.init()
-		// Stage3dCSS.camera = Stage3d.camera
-		// Stage2d.init({background:0x000000})
+
+		router.start(app,"body")
+		router.go('/page1')
 
 		// ---------------------------------------------------------------------- UPDATE / RESIZE LISTENERS
-		Stage.onUpdate.add(this.update)
-		// Stage.onResize.add(this.resize)
+		// Stage.onUpdate.add(this.update)
 	}
 
 	// -------------------------------------------------------------------------- UPDATE
 
-	update = (dt) => {
-		// console.log(dt)
-	}
+	// update = (dt) => {
+	// 	// console.log(dt)
+	// }
 
-	// -------------------------------------------------------------------------- RESIZE
-
-	resize = () => {
-
-	}
 }
 
 module.exports = new Main()
