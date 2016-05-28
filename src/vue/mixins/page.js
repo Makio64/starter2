@@ -1,7 +1,6 @@
 module.exports = {
 	route: {
 		activate: function(transition) {
-			console.log('test')
 			transition.next()
 			TweenLite.to(this.$els.page,1,{opacity:1})
 		},

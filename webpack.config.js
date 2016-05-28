@@ -14,7 +14,7 @@ var plugins = [
 	new webpack.optimize.CommonsChunkPlugin({children: true, async: true})
 ]
 if(isProduction){
-	plugins.push(new webpack.optimize.OccurenceOrderPlugin())
+	// plugins.push(new webpack.optimize.OccurenceOrderPlugin())
 	plugins.push(new webpack.optimize.UglifyJsPlugin({comments:false, compress:{warnings: false} }))
 } else {
 	plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -24,10 +24,10 @@ module.exports = {
 	devtool: isProduction?false:'cheap-module-eval-source-map',
 	entry: __dirname+(isProduction?"/src/js/Preloader":"/src/js/Main") ,
 	output: {
-		path: __dirname+(isProduction?"/":"")+'build/'+(isProduction?"js/":""),
+		path: __dirname+(isProduction?"/":"")+'build/'+(isProduction?"bin/":""),
 		filename: 'bundle.js',
 		chunkFilename: "[id].[chunkhash].bundle.js",
-		publicPath: isProduction?'./js/':'/bin/'
+		publicPath: isProduction?'./bin/':'/bin/'
 	},
 	module: {
 		// preLoaders: [

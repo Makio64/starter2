@@ -3,15 +3,19 @@
 class Preloader {
 
 	constructor(){
+		console.log('haha')
 		document.addEventListener('DOMContentLoaded', this.init)
 	}
 
 	init(){
+		console.log('fufufu')
 		document.removeEventListener('DOMContentLoaded', Preloader.init)
 		require.ensure(['./Main'], (require)=>{
+			console.log('LOL')
 			const Main = require('./Main')
-			new Main()
 		})
 	}
 }
+
+console.log('FU')
 module.exports = new Preloader()
