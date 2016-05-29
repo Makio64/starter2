@@ -11,10 +11,10 @@ var plugins = [
 	  minimize: isProduction,
 	  debug: !isProduction
 	}),
-	new webpack.optimize.CommonsChunkPlugin({children: true, async: true})
+	new webpack.optimize.CommonsChunkPlugin({children: true, async: true, filename: "commons.js"})
 ]
 if(isProduction){
-	// plugins.push(new webpack.optimize.OccurenceOrderPlugin())
+	plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
 	plugins.push(new webpack.optimize.UglifyJsPlugin({comments:false, compress:{warnings: false} }))
 } else {
 	plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -26,15 +26,11 @@ module.exports = {
 	output: {
 		path: __dirname+(isProduction?"/":"")+'build/'+(isProduction?"bin/":""),
 		filename: 'bundle.js',
-		chunkFilename: "[id].[chunkhash].bundle.js",
+		chunkFilename: "[id].bundle.js",
 		publicPath: isProduction?'./bin/':'/bin/'
 	},
 	module: {
-		// preLoaders: [
-		// 	{ test: /\.jsx?$/, exclude:[/node_modules|vendors/], loader: 'eslint'}
-		// ],
 		loaders: [
-			// { test: /\.(glsl|vs|fs)$/, loader: 'shader' },
 			{ test: /\.json$/, loader: 'json' },
 			{ test: /\.jsx?$/, exclude:[/node_modules|vendors/], loader:'babel', query: {presets:['es2015-native-modules', 'stage-0']} },
 			{ test: /\.vue$/, loader: 'vue' }
@@ -44,9 +40,8 @@ module.exports = {
 		cssSourceMap:!isProduction
 	},
 	resolve: {
-		extensions:['','.glsl','.fs','.vs','.json','.js','.vue'],
+		extensions:['','.json','.js','.vue'],
 		root:[
-			// __dirname+'src/glsl/',
 			__dirname+'src/js/',
 			__dirname+'src/vue/',
 			__dirname+'static/data/',
@@ -68,7 +63,5 @@ module.exports = {
 		noInfo:false,
 		stats: { colors: true }
 	},
-	// glsl: { chunkPath: __dirname+'/src/glsl/chunks' },
-	// eslint: { configFile: __dirname+'/.eslintrc' },
 	plugins:plugins
 };
