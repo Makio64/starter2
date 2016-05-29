@@ -1,7 +1,13 @@
 var webpack = require("webpack");
 
 var isProduction = process.argv.indexOf("-p") > -1
+
+// ----------------------------------------------------------------------------- PLUGINS
+
+var OfflinePlugin = require('offline-plugin');
+
 var plugins = [
+	new webpack.DefinePlugin({ isProduction: isProduction }),
 	new webpack.ProvidePlugin({
 		dat: "dat",
 		page: "page",
@@ -11,14 +17,17 @@ var plugins = [
 	  minimize: isProduction,
 	  debug: !isProduction
 	}),
-	new webpack.optimize.CommonsChunkPlugin({children: true, async: true, filename: "commons.js"})
+	new webpack.optimize.CommonsChunkPlugin({children: true, async: true})
 ]
 if(isProduction){
 	plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
 	plugins.push(new webpack.optimize.UglifyJsPlugin({comments:false, compress:{warnings: false} }))
+	plugins.push(new OfflinePlugin())
 } else {
 	plugins.push(new webpack.HotModuleReplacementPlugin())
 }
+
+// ----------------------------------------------------------------------------- CONFIG
 
 module.exports = {
 	devtool: isProduction?false:'cheap-module-eval-source-map',
@@ -49,7 +58,6 @@ module.exports = {
 		],
 		alias: {
 			dat: 		__dirname+'/static/vendors/'+"dat.gui.js",
-			page: 		__dirname+'/static/vendors/'+"page.js",
 			isMobile: 	__dirname+'/static/vendors/'+"isMobile.js",
 		}
 	},

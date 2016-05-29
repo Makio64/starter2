@@ -35,6 +35,7 @@
 	"css-loader": "^0.23.1",
 	"json-loader": "*",
 	"nib": "*",
+	"offline-plugin": "^3.2.1",
 	"raw-loader": "*",
 	"signals": "*",
 	"stylus": "*",
@@ -49,14 +50,13 @@
 	"webpack-dev-server": "^2.1.0-beta.0"
   },
   "scripts": {
-	"start": "npm run js:dev",
-	"build": "npm run js:prod",
+	"start": "npm run preBuild && npm run js:dev",
 	"js:dev": "webpack-dev-server --history-api-fallback --progress",
 	"js:prod": "webpack --progress -p",
-	"build-extra": "webpack --progress --display-modules --display-reasons --display-exclude='vue' -p",
+	"js:prod-extra": "webpack --progress --display-modules --display-reasons --display-exclude='vue' -p",
 	"dist": "for step in 'preDist' 'preBuild' 'js:prod' 'toDist'; do npm run $step; done",
 	"preDist": "rm -rf dist/ && mkdir dist/",
 	"preBuild": "rm -rf build/ && mkdir build/",
-	"toDist": "cp -rf build/** dist & cp -rf static/** dist"
+	"toDist": "cp -rf build/** dist && cp -rf static/** dist"
   }
 }

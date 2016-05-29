@@ -7,6 +7,7 @@ Html5 project starter with workflow combining the power of the best tools of the
 	- Tree Shaking
 	- Minify & optimize the build
 	- Source-map generation
+	- Offline available ( use [OfflinePlugin](https://github.com/NekR/offline-plugin) )
 
 
 - [Webpack2 dev-server](https://webpack.github.io/docs/webpack-dev-server.html)
@@ -22,7 +23,7 @@ Html5 project starter with workflow combining the power of the best tools of the
 	- Best css preprocessor tool
 
 
-- [Babeljs](https://babeljs.io/)
+- [Babel js](https://babeljs.io/)
 	- Allow you to write your code in es6 & es7
 
 ## Install
@@ -30,11 +31,11 @@ Install [nodejs](https://nodejs.org/)
 
 In terminal: `npm i`
 
-## Start dev server
-In terminal: `npm start`
+## Use it
+```
+// start a local server with hot reload
+npm start
 
-## Production Build
-In terminal: `npm run build`
-
-## Production Build + extra infos
-In terminal: `npm run build-extra`
+// create optimize/minify build for production
+npm run dist
+```
