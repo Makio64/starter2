@@ -10,7 +10,6 @@ var plugins = [
 	new webpack.DefinePlugin({ isProduction: isProduction }),
 	new webpack.ProvidePlugin({
 		dat: "dat",
-		page: "page",
 		isMobile: "isMobile"
 	}),
 	new webpack.LoaderOptionsPlugin({
